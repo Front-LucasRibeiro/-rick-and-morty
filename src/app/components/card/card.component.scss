@@ -1,0 +1,67 @@
+@import '../../../assets/icons';
+@import '../../../styles';
+
+.card {
+  width: 14rem;
+  height: 299px;
+  border-radius: 12px;
+  border: 1px solid $gray-medium;
+  transition: .5s;
+  cursor: pointer;
+
+  &:hover{
+    transform: scale(1.03);
+    transition: .5s;
+  }
+
+  .foto {
+    position: relative;
+    display: flex;
+    height: 224px;
+    background-color: $gray-light;
+    border-radius: 12px 12px 0 0;
+
+    img{
+      border-radius: 12px 12px 0 0;
+    }
+
+    .favoritos {
+      display: inline-block;
+      background-image: url($iconFavoritosInativo);
+      background-repeat: no-repeat;
+      width: 20px;
+      height: 18px;
+      position: absolute;
+      right: 14px;
+      top: 14px;
+
+      &:hover,
+      &.ativo {
+        background-image: url($iconFavoritosAtivo);
+      }
+    }
+  }
+
+  .info {
+    padding: 12px;
+    background-color: $main-color;
+    border-radius: 0 0 12px 12px;
+
+    .name {
+      font-family: $sec-font;
+      font-size: 1.5rem;
+      font-weight: 400;
+      line-height: 1.5rem;
+      letter-spacing: -0.02em;
+      color: #fafafa;
+      margin-bottom: 4px;
+    }
+
+    .tipo {
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.3rem;
+      color: #a4a4a4;
+    }
+  }
+}

@@ -1,0 +1,118 @@
+@import '../../../assets/icons';
+@import '../../../styles';
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $main-color;
+  height: 64px;
+  border-bottom: 1px solid #3D3D3D;
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+
+  .logo {
+    font-family: "Creepster", system-ui;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .navegacao {
+    ul {
+      display: flex;
+      align-items: center;
+
+      li {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8px 16px;
+        height: 40px;
+        border: 1px solid $gray-medium;
+        font-size: 0.875rem;
+        font-weight: 600;
+        background-color: $main-color;
+        color: #A4A4A4;
+        cursor: pointer;
+
+        //start - icones no before
+        &:before {
+          content: "";
+          display: inline-block;
+          width: 24px;
+          height: 24px;
+          padding-right: 10px;
+          background-repeat: no-repeat;
+          filter: invert(0.75);
+        }
+
+        &.ativo {
+          background-color: $sec-color;
+          color: $main-color;
+
+          &:before {
+            background-image: url($iconInicio);
+            filter: invert(0);
+          }
+        }
+
+        //end - icones no before
+
+        &.inicio {
+          width: 100px;
+          border-radius: 12px 0 0 12px;
+
+          &:before {
+            background-image: url($iconInicio);
+
+          }
+        }
+
+        &.favoritos {
+          border-radius: 0 12px 12px 0;
+          min-width: 154px;
+          max-width: max-content;
+          border-left: 0;
+
+          &.ativo {
+            .counter{
+              color: $sec-color;
+              background-color: $gray-medium;
+            }
+          }
+
+          &:before {
+            background-image: url($iconFavoritos);
+            width: 16px;
+            height: 14px;
+          }
+
+          .counter {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-width: 20px;
+            height: 20px;
+            border-radius: 100%;
+            background-color: $sec-color;
+            font-weight: 700;
+            font-size: 0.875rem;
+            color: $main-color;
+            margin-left: 10px;
+            padding: 2px 4px;
+            border: 1px solid $gray-medium;
+          }
+        }
+      }
+    }
+  }
+}
