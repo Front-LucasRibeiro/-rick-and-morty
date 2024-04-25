@@ -1,11 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgFor, NgIf, NgTemplateOutlet } from '@angular/common';
 
 import { BuscaComponent } from '../../components/busca/busca.component';
 import { CardComponent } from '../../components/card/card.component';
 import { InfoContentComponent } from '../../components/info-content/info-content.component';
-import { Person, Results } from '../../services/rickandmortyapi';
+import { Person, Results } from '../../interfaces/rickandmortyapi';
 import { RickandmortyapiService } from '../../services/rickandmortyapi.service';
+import { catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 
 @Component({
@@ -17,7 +19,7 @@ import { RickandmortyapiService } from '../../services/rickandmortyapi.service';
 })
 
 
-export class ListagemComponent {
+export class ListagemComponent implements OnInit {
   titlePage = 'Início'
   mensagemInfo = {
     textInfo: 'Nada foi encontrado',
@@ -32,10 +34,18 @@ export class ListagemComponent {
 
   ngOnInit(): void {
     this.service.listar().subscribe((data: Results) => {
-      console.log('dt', data.results)
-
       this.cards = data.results
-    })
-    
+    })      
+  }
+
+  // recebendo termo pelo evento emitTerm do component busca
+  busca(term: string){
+    this.service.buscar(term).pipe(
+      catchError(error => {
+        return this.cards = []
+      })
+    ).subscribe((data: Results) => {
+      this.cards = data.results;
+    });
   }
 }

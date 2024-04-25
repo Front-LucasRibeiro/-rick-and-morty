@@ -2,7 +2,7 @@
 
   <div class="top">
     <h2 class="title-page">{{ titlePage }}</h2>
-    <app-busca />
+    <app-busca (emitTerm)="busca($event)" />
   </div>
 
   <ul class="list" *ngIf="cards.length > 0; else vazio">

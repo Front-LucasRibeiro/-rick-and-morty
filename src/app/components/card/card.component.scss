@@ -1,6 +1,29 @@
 @import '../../../assets/icons';
 @import '../../../styles';
 
+@keyframes subir {
+  0% {
+    height: 0px;
+    transform: rotate(0deg); 
+  }
+  25% {
+    height: 40px;
+    transform: rotate(5deg); 
+  }
+  50% {
+    height: 70px;
+    transform: rotate(-5deg); 
+  }
+  75% {
+    height: 110px;
+    transform: rotate(5deg); 
+  }
+  100% {
+    height: auto;
+    transform: rotate(0deg); 
+  }
+}
+
 .card {
   position: relative;
   width: 14rem;
@@ -54,6 +77,9 @@
     right: 0;
     bottom: 0;
     width: 14rem;
+    animation-name: subir;
+    animation-duration: .7s;
+    animation-fill-mode: ease-in-out;
 
     .name {
       font-family: $sec-font;

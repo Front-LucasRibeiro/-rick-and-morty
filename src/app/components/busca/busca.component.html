@@ -1,1 +1,9 @@
-<input id="busca" type="text" class="busca" placeholder="Pesquisar" />
+<input 
+  id="busca" 
+  name="busca" 
+  type="text" 
+  class="busca" 
+  placeholder="Pesquisar"  
+  (keyup)="getTermDigitado()" 
+  [(ngModel)]="term" 
+/>
