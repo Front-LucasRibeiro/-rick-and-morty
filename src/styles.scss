@@ -1,1 +1,54 @@
-/* You can add global styles to this file, and also import other style files */
+@import './reset';
+@import url('https://fonts.googleapis.com/css2?family=Creepster&family=Poppins&display=swap');
+
+
+
+
+// paleta de cores globais
+$main-color: #0A0A0A;
+$sec-color: #fff;
+$ter-color: #1F1F1F;
+$gray-medium: #3D3D3D;
+$gray-light: #CACACA;
+$title-color: #00B5CC;
+$border-title-color: #B2DF28;
+
+
+// fonts 
+$main-font: "Poppins", sans-serif;
+$sec-font: "Creepster", system-ui;
+
+
+html,
+body {
+  font-size: 16px;
+  font-family: $main-font;
+  background-color: $ter-color;
+}
+
+* {
+  font-family: $main-font;
+  box-sizing: border-box;
+}
+
+.main {
+  max-width: 720px;
+  width: 100%;
+  margin: 48px auto;
+}
+
+.container {
+  max-width: 100%;
+  padding: 0 1.5rem;
+}
+
+.title-page {
+  font-family: $sec-font;
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 48px;
+  letter-spacing: -0.02em;
+  color: $title-color;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: $border-title-color;
+}
