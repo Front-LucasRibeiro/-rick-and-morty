@@ -1,0 +1,16 @@
+<section class="list-cards">
+
+  <div class="top">
+    <h2 class="title-page">{{ titlePage }}</h2>
+  </div>
+
+  <ul class="list" *ngIf="cards.length > 0; else vazio">
+    <app-card *ngFor="let card of cards" [card]="card"></app-card>     
+  </ul>
+
+</section>
+
+<ng-template #vazio>
+  <app-info-content [mensagem]=mensagemInfo />
+</ng-template>
+

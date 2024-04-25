@@ -1,16 +1,16 @@
 <header class="header container">
-  <h1 class="logo">
+  <h1 class="logo" [routerLink]="['/']">
     <img src="../../../assets/logo-rick-and-morty.png" title="Rick and Morty" alt="Logo do App Rick and Morty">
     <span class="visually-hidden">Logo do aplicativo Rick and Morty</span>
   </h1>
 
   <nav class="navegacao">
     <ul>
-      <li class="inicio ativo">
+      <li class="inicio" [routerLinkActive]="['ativo']" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/']">
         Início
       </li>
-      <li class="favoritos">
-        Favoritos
+      <li class="favoritos" [routerLinkActive]="['ativo']" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/favoritos']">
+        Favoritos 
         <span class="counter">3</span>
       </li>
     </ul>

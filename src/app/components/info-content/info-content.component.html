@@ -1,5 +1,9 @@
 <section class="info-content">
-  <p class="text-info">Nada foi encontrado</p>
-  <p class="text-sugest">Tente realizar uma nova busca.</p>
-  <a href="" class="button">Voltar ao início</a>
+  <p class="text-info">{{ mensagem?.textInfo }}</p>
+  <p class="text-sugest">{{ mensagem?.textSugest }}</p>
+
+  <a *ngIf="mensagem?.buttonShow" [routerLink]="mensagem?.buttonLink" class="button">{{ mensagem?.buttonText }}</a>
 </section> 
+
+
+

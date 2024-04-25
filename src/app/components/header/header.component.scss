@@ -21,9 +21,10 @@
   }
 
   .logo {
-    font-family: "Creepster", system-ui;
+    font-family: $sec-font;
     font-weight: 400;
     font-style: normal;
+    cursor: pointer;
   }
 
   .navegacao {

@@ -2,6 +2,7 @@
 @import '../../../styles';
 
 .card {
+  position: relative;
   width: 14rem;
   height: 299px;
   border-radius: 12px;
@@ -43,9 +44,16 @@
   }
 
   .info {
+    display: flex;
+    flex-direction: column;
     padding: 12px;
     background-color: $main-color;
     border-radius: 0 0 12px 12px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 14rem;
 
     .name {
       font-family: $sec-font;

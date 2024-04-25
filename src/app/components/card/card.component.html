@@ -1,10 +1,22 @@
-<li class="card">
-  <picture class="foto">
-    <span class="favoritos"></span>
-    <img src="../../../assets/personagem-sem-foto.jpg" alt="">
-  </picture>
-  <div class="info">
-    <h3 class="name">Rick Sanchez</h3>
-    <span class="tipo">Human</span>     
-  </div>
-</li>
+
+<ng-container *ngIf="card?.image !== '';">
+  <li class="card">
+    <picture class="foto">
+      <span class="favoritos {{isAtivo}}" (click)="favoritar()"></span>
+      <img src="{{ card?.image }}" *ngIf="card?.image !== '' " alt="">
+    </picture>
+    <div class="info">
+      <h3 class="name">{{ card?.name }}</h3>
+      <span class="tipo">{{ card?.gender }}</span>    
+      <span class="tipo">{{ card?.status }}</span>    
+
+      <ng-container *ngIf="card?.type === ''; else showType">
+        <span class="tipo">{{ card?.species }}</span>
+      </ng-container>
+
+      <ng-template #showType>
+        <span class="tipo">{{ card?.type }}</span>
+      </ng-template>  
+    </div>
+  </li>
+</ng-container>

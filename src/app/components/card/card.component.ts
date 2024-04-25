@@ -1,12 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Person } from '../../services/rickandmortyapi';
+import { NgIf } from '@angular/common';
+
 
 @Component({
   selector: 'app-card',
   standalone: true,
-  imports: [],
+  imports: [NgIf],
   templateUrl: './card.component.html',
   styleUrl: './card.component.scss'
 })
+
+
 export class CardComponent {
+  isAtivo = ""
+  @Input() card: Person | undefined;
+  
+  favoritar(){
+ 
+    // persistir no localstorage e guardar o state global
+    
+    if(this.isAtivo === 'ativo'){
+      this.isAtivo = ""
+
+
+
+    }else{
+      this.isAtivo = "ativo"
+    }
+  }
 
 }
