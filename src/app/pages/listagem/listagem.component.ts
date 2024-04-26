@@ -4,9 +4,10 @@ import { NgFor, NgIf, NgTemplateOutlet } from '@angular/common';
 import { BuscaComponent } from '../../components/busca/busca.component';
 import { CardComponent } from '../../components/card/card.component';
 import { InfoContentComponent } from '../../components/info-content/info-content.component';
-import { Person, Results } from '../../interfaces/rickandmortyapi';
+import { Person } from '../../interfaces/rickandmortyapi';
 import { RickandmortyapiService } from '../../services/rickandmortyapi.service';
-import { Subscription } from 'rxjs';
+import { Subject, Subscription, of } from 'rxjs';
+import { debounceTime, distinctUntilChanged, switchMap, catchError } from 'rxjs/operators';
 
 
 
@@ -30,6 +31,7 @@ export class ListagemComponent implements OnInit, OnDestroy {
   }
   cards: Person[] = []
   subscription!: Subscription
+  private buscaTermSubject: Subject<string> = new Subject<string>();
 
   constructor(private service: RickandmortyapiService) { }
 
@@ -37,18 +39,26 @@ export class ListagemComponent implements OnInit, OnDestroy {
     this.subscription = this.service.listar().subscribe({
       next: (data: Person[]) => this.cards = data,
       error: erro => this.cards = []
-    })
+    });
+
+    // Configura a cadeia de observáveis para a busca
+    this.buscaTermSubject.pipe(
+      debounceTime(300), // Aguarda 300ms após a última digitação
+      distinctUntilChanged(), // Garante que apenas termos diferentes são enviados para a busca
+      switchMap((term: string) => this.service.buscar(term).pipe(
+        catchError(() => of([])) // Trata o erro e retorna um Observable vazio em caso de falha
+      ))
+    ).subscribe((data: Person[]) => {
+      this.cards = data;
+    });
   }
 
-  // recebendo termo pelo evento emitTerm do component busca
-  busca(term: string) {
-    this.subscription = this.service.buscar(term).subscribe({
-      next: (data: Person[]) => this.cards = data,
-      error: erro => this.cards = []
-    })
+  // Recebendo termo pelo evento emitTerm do component busca
+  busca(term: string): void {
+    this.buscaTermSubject.next(term); // Envia o termo para a busca
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe()
+    this.subscription.unsubscribe();
   }
 }
