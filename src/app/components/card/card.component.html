@@ -3,7 +3,7 @@
   <li class="card" data-id="{{ card?.id }}">
     <picture class="foto">
       <span class="favoritos {{isAtivo}}" (click)="favoritar()"></span>
-      <img src="{{ card?.image }}" *ngIf="card?.image !== '' " alt="">
+      <img src="{{ card?.image }}" *ngIf="card?.image !== '' " alt="{{ card?.name }}">
     </picture>
     <div class="info">
       <h3 class="name">{{ card?.name }}</h3>

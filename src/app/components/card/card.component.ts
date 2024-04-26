@@ -19,7 +19,6 @@ export class CardComponent {
   favoritar(){
  
     // persistir no localstorage e guardar o state global
-    
     if(this.isAtivo === 'ativo'){
       this.isAtivo = ""
 
