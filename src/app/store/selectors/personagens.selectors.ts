@@ -1,8 +1,9 @@
 import { createSelector } from '@ngrx/store';
-import { AppState } from '../reducers/personagens.reducer';
+import { AppState } from '../states/app.state';
+
 
 
 export const selectFavoritos = createSelector(
   (state: AppState) => state.favoritosProvider,
-  (favoritos) => favoritos.favoritos 
+  (favoritos) => favoritos.favoritosState 
 );

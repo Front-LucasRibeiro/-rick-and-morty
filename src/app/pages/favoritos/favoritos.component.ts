@@ -5,7 +5,8 @@ import { Store } from '@ngrx/store';
 import { InfoContentComponent } from '../../components/info-content/info-content.component';
 import { CardComponent } from '../../components/card/card.component';
 import { Person } from '../../interfaces/rickandmortyapi';
-import { AppState } from '../../store/reducers/personagens.reducer';
+import { AppState } from '../../store/states/app.state';
+
 
 @Component({
   selector: 'app-favoritos',
@@ -15,7 +16,7 @@ import { AppState } from '../../store/reducers/personagens.reducer';
   styleUrl: './favoritos.component.scss'
 })
 
-export class FavoritosComponent implements OnInit {
+export default class FavoritosComponent implements OnInit {
   titlePage = 'Favoritos'
   mensagemInfo = {
     textInfo: 'Parece que você ainda não tem favoritos',
@@ -32,5 +33,9 @@ export class FavoritosComponent implements OnInit {
     this.store.select(selectFavoritos).forEach(data => {
       this.cards = data
     })
+  }
+
+  trackByFn(_index: number, item: Person): number {
+    return item.id;
   }
 }

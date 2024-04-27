@@ -1,17 +1,17 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgFor, NgIf, NgTemplateOutlet } from '@angular/common';
+import { Store } from '@ngrx/store';
+import { RickandmortyapiService } from '../../services/rickandmortyapi.service';
+import { Subject, Subscription, of } from 'rxjs';
+import { debounceTime, distinctUntilChanged, switchMap, catchError } from 'rxjs/operators';
+
+import { selectFavoritos } from '../../store/selectors/personagens.selectors';
+import { AppState } from '../../store/states/app.state';
+import { Person } from '../../interfaces/rickandmortyapi';
 
 import { BuscaComponent } from '../../components/busca/busca.component';
 import { CardComponent } from '../../components/card/card.component';
 import { InfoContentComponent } from '../../components/info-content/info-content.component';
-import { Person } from '../../interfaces/rickandmortyapi';
-import { RickandmortyapiService } from '../../services/rickandmortyapi.service';
-import { Subject, Subscription, of } from 'rxjs';
-import { debounceTime, distinctUntilChanged, switchMap, catchError } from 'rxjs/operators';
-import { AppState } from '../../store/reducers/personagens.reducer';
-import { Store } from '@ngrx/store';
-import { selectFavoritos } from '../../store/selectors/personagens.selectors';
-
 
 
 @Component({
@@ -23,7 +23,7 @@ import { selectFavoritos } from '../../store/selectors/personagens.selectors';
 })
 
 
-export class ListagemComponent implements OnInit, OnDestroy {
+export default class ListagemComponent implements OnInit, OnDestroy {
   titlePage = 'Início'
   mensagemInfo = {
     textInfo: 'Nada foi encontrado',
@@ -52,7 +52,7 @@ export class ListagemComponent implements OnInit, OnDestroy {
       next: (data: Person[]) => {
         this.checkCardIsFavorite(data)        
       },
-      error: erro => this.cards = []
+      error: _erro => this.cards = []
     });
 
     // Configura a cadeia de observáveis para a busca
@@ -68,15 +68,14 @@ export class ListagemComponent implements OnInit, OnDestroy {
   }
 
   checkCardIsFavorite(data: Person[]): Person[] {
-    data.forEach(card => {
+    this.cards = data.map(card => {
       const favoritado = this.favoritados.find(cardFavorito => card.id === cardFavorito.id);
-
       if (favoritado) {
         card.favorito = 'ativo';
       }
+      return card;
     });
-
-    return this.cards = data;
+    return this.cards;
   }
 
   // Recebendo termo pelo evento emitTerm do component busca
@@ -86,5 +85,9 @@ export class ListagemComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+  }
+
+  trackByFn(_index: number, item: Person): number {
+    return item.id;
   }
 }

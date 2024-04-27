@@ -27,7 +27,7 @@ export class CardComponent {
       this.store.dispatch(personagemActions.removerItemFavoritos({ id: this.card!.id }))
 
     } else {
-      // guardar o state global
+      // guarda o state global
       this.favorito = "ativo"
       
       const card: Person = {

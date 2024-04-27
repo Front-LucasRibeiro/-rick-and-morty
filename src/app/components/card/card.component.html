@@ -1,22 +1,20 @@
+<li class="card" *ngIf="card?.image !== ''" data-id="{{ card?.id }}">
+  <picture class="foto">
+    <span class="favoritos {{ favorito }}" (click)="favoritar()"></span>
+    <img src="{{ card?.image }}" alt="{{ card?.name }}">
+  </picture>
+  <div class="info">
+    <h3 class="name">{{ card?.name }}</h3>
+    <span class="tipo">{{ card?.gender }}</span>    
+    <span class="tipo">{{ card?.status }}</span>    
 
-<ng-container *ngIf="card?.image !== '';">
-  <li class="card" data-id="{{ card?.id }}">
-    <picture class="foto">
-      <span class="favoritos {{ favorito }}" (click)="favoritar()"></span>
-      <img src="{{ card?.image }}" *ngIf="card?.image !== '' " alt="{{ card?.name }}">
-    </picture>
-    <div class="info">
-      <h3 class="name">{{ card?.name }}</h3>
-      <span class="tipo">{{ card?.gender }}</span>    
-      <span class="tipo">{{ card?.status }}</span>    
+    <ng-container *ngIf="card?.type && card?.species">
+      <span class="tipo">{{ card?.type }}</span>
+      <span class="tipo">{{ card?.species }}</span>
+    </ng-container>
 
-      <ng-container *ngIf="card?.type === ''; else showType">
-        <span class="tipo">{{ card?.species }}</span>
-      </ng-container>
-
-      <ng-template #showType>
-        <span class="tipo">{{ card?.type }}</span>
-      </ng-template>  
-    </div>
-  </li>
-</ng-container>
+    <ng-container *ngIf="!(card?.type && card?.species)">
+      <span class="tipo">{{ card?.type || card?.species }}</span>
+    </ng-container>
+  </div>
+</li>

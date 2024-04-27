@@ -2,7 +2,9 @@
   <p class="text-info">{{ mensagem?.textInfo }}</p>
   <p class="text-sugest">{{ mensagem?.textSugest }}</p>
 
-  <a *ngIf="mensagem?.buttonShow" [routerLink]="mensagem?.buttonLink" class="button">{{ mensagem?.buttonText }}</a>
+  <ng-template [ngIf]="mensagem?.buttonShow">
+    <a [routerLink]="mensagem?.buttonLink" class="button">{{ mensagem?.buttonText }}</a>
+  </ng-template> 
 </section> 
 
 

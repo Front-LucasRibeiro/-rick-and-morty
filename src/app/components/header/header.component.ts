@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLinkActive, RouterModule } from '@angular/router';
-import { AppState } from '../../store/reducers/personagens.reducer';
 import { Store } from '@ngrx/store';
 import { selectFavoritos } from '../../store/selectors/personagens.selectors';
 import { Observable, map } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
+import { AppState } from '../../store/states/app.state';
 
 @Component({
   selector: 'app-header',

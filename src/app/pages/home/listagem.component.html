@@ -6,7 +6,11 @@
   </div>
 
   <ul class="list" *ngIf="cards.length > 0; else vazio">
-    <app-card *ngFor="let card of cards" [card]="card" favorito="{{ card.favorito }}"></app-card>     
+    <app-card 
+      *ngFor="let card of cards; trackBy: trackByFn"
+      [card]="card" 
+      favorito="{{ card.favorito }}"
+    />
   </ul>
 
 </section>

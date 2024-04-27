@@ -1,14 +1,16 @@
 import { Routes } from '@angular/router';
-import { FavoritosComponent } from './pages/favoritos/favoritos.component';
-import { ListagemComponent } from './pages/listagem/listagem.component';
 
 export const routes: Routes = [
   {
-    path: 'favoritos',
-    component: FavoritosComponent
+    path: '',
+    loadComponent: () => import('./pages/home/listagem.component')
   },
   {
-    path: '',
-    component: ListagemComponent
+    path: 'favoritos',
+    loadComponent: () => import('./pages/favoritos/favoritos.component')
+  },
+  {
+    path: '**',
+    loadComponent: () => import('./pages/not-found/not-found.component')
   },
 ];

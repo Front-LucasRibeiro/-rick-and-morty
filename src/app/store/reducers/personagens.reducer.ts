@@ -2,29 +2,27 @@ import { createReducer, on } from "@ngrx/store";
 import { Person } from "../../interfaces/rickandmortyapi";
 import { personagemActions } from "../actions/personagens.actions";
 
-export interface AppState {
-  favoritosProvider: FavoritosState;
-}
+
 
 export interface FavoritosState {
-  favoritos: Person[];
+  favoritosState: Person[];
 }
 
 const initialState: FavoritosState = {
-  favoritos: []
+  favoritosState: []
 };
 
 export const favoritoReducer = createReducer(
   initialState,
   on(personagemActions.createItemFavoritos, (state, { card }) => {
     return {
-      favoritos: [...state.favoritos, card]
+      favoritosState: [...state.favoritosState, card]
     };
   }),
   on(personagemActions.removerItemFavoritos, (state, { id }) => {
     return {
       ...state,
-      favoritos: state.favoritos.filter(item => item.id !== id)
+      favoritosState: state.favoritosState.filter(item => item.id !== id)
     };
   }),
 );
