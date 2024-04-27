@@ -1,6 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { Person } from '../../interfaces/rickandmortyapi';
 import { NgIf } from '@angular/common';
+import { Store } from '@ngrx/store';
+import { personagemActions } from '../../store/actions/personagens.actions';
 
 
 @Component({
@@ -15,17 +17,31 @@ import { NgIf } from '@angular/common';
 export class CardComponent {
   isAtivo = ""
   @Input() card: Person | undefined;
-  
-  favoritar(){
- 
-    // persistir no localstorage e guardar o state global
-    if(this.isAtivo === 'ativo'){
-      this.isAtivo = ""
+  @Input() favorito: string | undefined;
+  store = inject(Store)
 
-
-
-    }else{
-      this.isAtivo = "ativo"
+  favoritar() {
+    
+    if (this.favorito === 'ativo') {
+      // remove da listagem de favoritos 
+      // this.favorito = ""
+    } else {
+      // guardar o state global
+      this.favorito = "ativo"
+      
+      const card: Person = {
+        id: this.card!.id,
+        name: this.card!.name,
+        status: this.card!.status,
+        species: this.card!.species,
+        type: this.card!.type,
+        gender: this.card!.gender,
+        image: this.card!.image,
+        favorito: 'ativo'
+      }
+      
+      // enviando uma action 
+      this.store.dispatch(personagemActions.createItemFavoritos({ card }))
     }
   }
 

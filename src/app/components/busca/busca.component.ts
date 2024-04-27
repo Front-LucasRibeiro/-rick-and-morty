@@ -16,7 +16,7 @@ export class BuscaComponent {
 
   constructor(private service: RickandmortyapiService){}
 
-  // enviar termo para buscar o personagem na API pelo nome
+  // enviar termo para a listagem, para buscar o personagem na API pelo nome
   getTermDigitado(){
     this.emitTerm.emit(this.term)
   }

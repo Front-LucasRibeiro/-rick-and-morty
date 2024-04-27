@@ -6,6 +6,7 @@ export interface Person {
   type?: string;
   gender: string;
   image: string;
+  favorito?: string;
 }
 
 export interface Info {
@@ -19,3 +20,4 @@ export interface Results {
   info: Info;
   results: Person[];
 }
+

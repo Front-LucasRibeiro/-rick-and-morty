@@ -1,6 +1,11 @@
 import { createAction, props } from '@ngrx/store';
+import { Person } from '../../interfaces/rickandmortyapi';
 
-export const atualizarTermoBusca = createAction(
-  '[Busca] Atualizar Termo de Busca',
-  props<{ termo: string }>()
+const createItemFavoritos = createAction(
+  '[Favoritos] Adicionar item na lista de favoritos',
+  props<{ card: Person }>()
 );
+
+export const personagemActions = {
+  createItemFavoritos
+}

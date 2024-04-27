@@ -8,6 +8,9 @@ import { Person } from '../../interfaces/rickandmortyapi';
 import { RickandmortyapiService } from '../../services/rickandmortyapi.service';
 import { Subject, Subscription, of } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap, catchError } from 'rxjs/operators';
+import { AppState } from '../../store/reducers/personagens.reducer';
+import { Store } from '@ngrx/store';
+import { selectFavoritos } from '../../store/selectors/personagens.selectors';
 
 
 
@@ -30,14 +33,25 @@ export class ListagemComponent implements OnInit, OnDestroy {
     buttonText: ''
   }
   cards: Person[] = []
+  favoritados: Person[] = []
   subscription!: Subscription
   private buscaTermSubject: Subject<string> = new Subject<string>();
 
-  constructor(private service: RickandmortyapiService) { }
+  constructor(
+    private service: RickandmortyapiService,
+    private store: Store<AppState>
+  ) { }
 
   ngOnInit(): void {
+
+    this.store.select(selectFavoritos).forEach(data => {
+      this.favoritados = data
+    })
+
     this.subscription = this.service.listar().subscribe({
-      next: (data: Person[]) => this.cards = data,
+      next: (data: Person[]) => {
+        this.checkCardIsFavorite(data)        
+      },
       error: erro => this.cards = []
     });
 
@@ -49,8 +63,20 @@ export class ListagemComponent implements OnInit, OnDestroy {
         catchError(() => of([])) // Trata o erro e retorna um Observable vazio em caso de falha
       ))
     ).subscribe((data: Person[]) => {
-      this.cards = data;
+      this.checkCardIsFavorite(data)  
     });
+  }
+
+  checkCardIsFavorite(data: Person[]): Person[] {
+    data.forEach(card => {
+      const favoritado = this.favoritados.find(cardFavorito => card.id === cardFavorito.id);
+
+      if (favoritado) {
+        card.favorito = 'ativo';
+      }
+    });
+
+    return this.cards = data;
   }
 
   // Recebendo termo pelo evento emitTerm do component busca

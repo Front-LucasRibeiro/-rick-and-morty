@@ -1,8 +1,11 @@
 import { NgFor, NgIf, NgTemplateOutlet } from '@angular/common';
-import { Component } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
+import { selectFavoritos } from '../../store/selectors/personagens.selectors';
+import { Store } from '@ngrx/store';
 import { InfoContentComponent } from '../../components/info-content/info-content.component';
 import { CardComponent } from '../../components/card/card.component';
+import { Person } from '../../interfaces/rickandmortyapi';
+import { AppState } from '../../store/reducers/personagens.reducer';
 
 @Component({
   selector: 'app-favoritos',
@@ -11,7 +14,8 @@ import { CardComponent } from '../../components/card/card.component';
   templateUrl: './favoritos.component.html',
   styleUrl: './favoritos.component.scss'
 })
-export class FavoritosComponent {
+
+export class FavoritosComponent implements OnInit {
   titlePage = 'Favoritos'
   mensagemInfo = {
     textInfo: 'Parece que você ainda não tem favoritos',
@@ -20,7 +24,13 @@ export class FavoritosComponent {
     buttonLink: '/',
     buttonText: 'Voltar ao início'
   }
-  cards = [
+  cards: Person[] = []
 
-  ]
+  constructor(private store: Store<AppState>) { }
+
+  ngOnInit(): void {
+    this.store.select(selectFavoritos).forEach(data => {
+      this.cards = data
+    })
+  }
 }

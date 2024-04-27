@@ -2,7 +2,7 @@
 <ng-container *ngIf="card?.image !== '';">
   <li class="card" data-id="{{ card?.id }}">
     <picture class="foto">
-      <span class="favoritos {{isAtivo}}" (click)="favoritar()"></span>
+      <span class="favoritos {{ favorito }}" (click)="favoritar()"></span>
       <img src="{{ card?.image }}" *ngIf="card?.image !== '' " alt="{{ card?.name }}">
     </picture>
     <div class="info">
