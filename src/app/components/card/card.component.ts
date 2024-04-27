@@ -15,7 +15,6 @@ import { personagemActions } from '../../store/actions/personagens.actions';
 
 
 export class CardComponent {
-  isAtivo = ""
   @Input() card: Person | undefined;
   @Input() favorito: string | undefined;
   store = inject(Store)
@@ -24,7 +23,9 @@ export class CardComponent {
     
     if (this.favorito === 'ativo') {
       // remove da listagem de favoritos 
-      // this.favorito = ""
+      this.favorito = ""
+      this.store.dispatch(personagemActions.removerItemFavoritos({ id: this.card!.id }))
+
     } else {
       // guardar o state global
       this.favorito = "ativo"

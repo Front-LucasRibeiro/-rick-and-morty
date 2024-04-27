@@ -6,6 +6,12 @@ const createItemFavoritos = createAction(
   props<{ card: Person }>()
 );
 
+const removerItemFavoritos = createAction(
+  '[Favoritos] Remover item na lista de favoritos',
+  props<{ id: number }>()
+);
+
 export const personagemActions = {
-  createItemFavoritos
+  createItemFavoritos,
+  removerItemFavoritos
 }

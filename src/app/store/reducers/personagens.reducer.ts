@@ -20,5 +20,11 @@ export const favoritoReducer = createReducer(
     return {
       favoritos: [...state.favoritos, card]
     };
-  })
+  }),
+  on(personagemActions.removerItemFavoritos, (state, { id }) => {
+    return {
+      ...state,
+      favoritos: state.favoritos.filter(item => item.id !== id)
+    };
+  }),
 );
