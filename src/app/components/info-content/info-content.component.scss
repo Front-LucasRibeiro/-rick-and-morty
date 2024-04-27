@@ -12,11 +12,19 @@
   background-color: $main-color;
   border-radius: 12px;
   margin-top: 48px;
+  padding: 12px;
+
+  @media (max-width: 767px){
+    margin-top: 22px;
+    padding: 48px 22px;
+    height: auto;
+    width: auto;
+  }
 
   .text-info {
     font-size: 1.5rem;
     font-weight: 700;
-    line-height: 1.5rem;
+    line-height: 2rem;
     letter-spacing: -0.02em;
     text-align: center;
     color: #FAFAFA;

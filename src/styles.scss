@@ -22,6 +22,10 @@ body {
   font-size: 16px;
   font-family: $main-font;
   background-color: $ter-color;
+
+  @media (max-width: 767px){
+    font-size: 14px; 
+  }
 }
 
 * {
@@ -33,6 +37,11 @@ body {
   max-width: 720px;
   width: 100%;
   margin: 112px auto 48px;
+
+  @media (max-width: 767px){
+    padding: 0 14px;
+    margin-top: 162px;
+  }
 }
 
 .container {
@@ -42,19 +51,27 @@ body {
 
 .title-page {
   font-family: $sec-font;
-  font-size: 48px;
+  font-size: 3rem;
   font-weight: 400;
-  line-height: 48px;
+  line-height: 3rem;
   letter-spacing: -0.02em;
   color: $title-color;
   -webkit-text-stroke-width: 2px;
   -webkit-text-stroke-color: $border-title-color;
+
+  @media (max-width: 767px){
+    text-align: center;
+  }
 }
 
 .list-cards {
   .top {
     display: flex;
     justify-content: space-between;
+
+    @media (max-width: 767px){
+      flex-direction: column;
+    }
   }
 
   .list {
@@ -62,5 +79,9 @@ body {
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
     margin-top: 48px;
+
+    @media (max-width: 767px){
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 }

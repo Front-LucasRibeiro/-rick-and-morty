@@ -33,6 +33,10 @@
   transition: .5s;
   cursor: pointer;
 
+  @media (max-width: 767px){
+    width: auto;
+  }
+
   &:hover{
     transform: scale(1.03);
     transition: .5s;
@@ -47,6 +51,8 @@
 
     img{
       border-radius: 12px 12px 0 0;
+      width: 100%;
+      object-fit: cover;
     }
 
     .favoritos {
@@ -80,6 +86,10 @@
     animation-name: subir;
     animation-duration: .7s;
     animation-fill-mode: ease-in-out;
+
+    @media (max-width: 767px){
+      width: auto;
+    }
 
     .name {
       font-family: $sec-font;

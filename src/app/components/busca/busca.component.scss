@@ -12,6 +12,11 @@
   height: 48px;
   border: 1px solid $gray-medium;
 
+  @media (max-width: 767px){
+    margin-top: 22px;
+    width: 100%;
+  }
+
   
   &::placeholder{
     color: $sec-color;

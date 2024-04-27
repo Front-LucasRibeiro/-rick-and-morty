@@ -13,6 +13,12 @@
   height: 64px;
   border-bottom: 1px solid #3D3D3D;
 
+  @media (max-width: 767px){
+    flex-direction: column;
+    height: auto;
+    padding-bottom: 22px;
+  }
+
   .visually-hidden {
     position: absolute;
     width: 1px;
@@ -44,10 +50,15 @@
         height: 40px;
         border: 1px solid $gray-medium;
         font-size: 0.875rem;
+        line-height: 0.875rem;
         font-weight: 600;
         background-color: $main-color;
         color: #A4A4A4;
         cursor: pointer;
+
+        @media (max-width: 767px){
+          line-height: initial;
+        }
 
         //start - icones no before
         &:before {
@@ -111,10 +122,15 @@
             background-color: $sec-color;
             font-weight: 700;
             font-size: 0.875rem;
+            line-height: 0.875rem;
             color: $main-color;
             margin-left: 10px;
             padding: 2px 4px;
             border: 1px solid $gray-medium;
+
+            @media (max-width: 767px){
+              height: auto;
+            }
           }
         }
       }
