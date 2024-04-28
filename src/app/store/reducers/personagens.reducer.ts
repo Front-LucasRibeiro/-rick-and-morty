@@ -25,4 +25,9 @@ export const favoritoReducer = createReducer(
       favoritosState: state.favoritosState.filter(item => item.id !== id)
     };
   }),
+  on(personagemActions.removerTodosFavoritos, () => {
+    return {
+      favoritosState: []
+    };
+  }),
 );

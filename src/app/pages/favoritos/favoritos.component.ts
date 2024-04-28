@@ -6,6 +6,7 @@ import { InfoContentComponent } from '../../components/info-content/info-content
 import { CardComponent } from '../../components/card/card.component';
 import { Person } from '../../interfaces/rickandmortyapi';
 import { AppState } from '../../store/states/app.state';
+import { personagemActions } from '../../store/actions/personagens.actions';
 
 
 @Component({
@@ -40,6 +41,10 @@ export default class FavoritosComponent implements OnInit {
       return { ...card, favorito: 'ativo' };
     });
     return this.cards;
+  }
+
+  removerTodos(){
+    this.store.dispatch(personagemActions.removerTodosFavoritos())
   }
 
   trackByFn(_index: number, item: Person): number {

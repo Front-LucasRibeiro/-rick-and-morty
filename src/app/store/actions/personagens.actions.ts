@@ -11,7 +11,12 @@ const removerItemFavoritos = createAction(
   props<{ id: number }>()
 );
 
+const removerTodosFavoritos = createAction(
+  '[Favoritos] Remover todos itens na lista de favoritos'
+);
+
 export const personagemActions = {
   createItemFavoritos,
-  removerItemFavoritos
+  removerItemFavoritos,
+  removerTodosFavoritos
 }

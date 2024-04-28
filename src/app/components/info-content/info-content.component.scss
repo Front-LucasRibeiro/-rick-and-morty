@@ -38,25 +38,4 @@
     margin: 16px 0;
     color: #A4A4A4;
   }
-
-  .button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 139px;
-    background-color: $sec-color;
-    color: $main-color;
-    font-size: 0.875rem;
-    font-weight: 600;
-    line-height: 0.875rem;
-    text-decoration: none;
-    height: 40px;
-    border-radius: 12px;
-    transition: .5s;
-    
-    &:hover{
-      transform: scale(1.03);
-      transition: .5s;
-    }
-  }
 }
