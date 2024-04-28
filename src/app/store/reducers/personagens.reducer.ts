@@ -3,7 +3,6 @@ import { Person } from "../../interfaces/rickandmortyapi";
 import { personagemActions } from "../actions/personagens.actions";
 
 
-
 export interface FavoritosState {
   favoritosState: Person[];
 }

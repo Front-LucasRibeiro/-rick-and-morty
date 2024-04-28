@@ -2,7 +2,7 @@
 
   <div class="top">
     <h2 class="title-page">{{ titlePage }}</h2>
-    <app-busca (emitTerm)="busca($event)" />
+    <app-busca (emitTerm)="getTermBuscaComponent($event)" />
   </div>
 
   <ul class="list" *ngIf="cards.length > 0; else vazio">
@@ -12,6 +12,7 @@
     />
   </ul>
 
+  <app-paginacao (emitPage)="getPageChange($event)" [showPagination]=showPagination  />
 </section>
 
 <ng-template #vazio>

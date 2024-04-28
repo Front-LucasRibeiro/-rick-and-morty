@@ -1,0 +1,4 @@
+<div class="pagination">
+  <button class="button" *ngIf="page > 1 && showPagination" (click)="changePage('voltar')">Voltar</button>
+  <button class="button" *ngIf="page !== totalPages && showPagination" (click)="changePage('avancar')">Avançar</button>
+</div>
