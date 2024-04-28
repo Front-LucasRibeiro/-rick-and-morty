@@ -4,23 +4,27 @@
 @keyframes subir {
   0% {
     height: 0px;
-    transform: rotate(0deg); 
+    transform: rotate(0deg);
   }
+
   25% {
     height: 40px;
-    transform: rotate(5deg); 
+    transform: rotate(5deg);
   }
+
   50% {
     height: 70px;
-    transform: rotate(-5deg); 
+    transform: rotate(-5deg);
   }
+
   75% {
     height: 110px;
-    transform: rotate(5deg); 
+    transform: rotate(5deg);
   }
+
   100% {
     height: auto;
-    transform: rotate(0deg); 
+    transform: rotate(0deg);
   }
 }
 
@@ -33,13 +37,16 @@
   transition: .5s;
   cursor: pointer;
 
-  @media (max-width: 767px){
+  @media (max-width: 767px) {
     width: auto;
   }
 
-  &:hover{
-    transform: scale(1.03);
-    transition: .5s;
+
+  @media (min-width: 1025px) {
+    &:hover {
+      transform: scale(1.03);
+      transition: .5s;
+    }
   }
 
   .foto {
@@ -49,7 +56,7 @@
     background-color: $gray-light;
     border-radius: 12px 12px 0 0;
 
-    img{
+    img {
       border-radius: 12px 12px 0 0;
       width: 100%;
       object-fit: cover;
@@ -65,7 +72,12 @@
       right: 14px;
       top: 14px;
 
-      &:hover,
+      @media (min-width: 1025px) {
+        &:hover {
+          background-image: url($iconFavoritosAtivo);
+        }
+      }
+      
       &.ativo {
         background-image: url($iconFavoritosAtivo);
       }
@@ -87,7 +99,7 @@
     animation-duration: .7s;
     animation-fill-mode: ease-in-out;
 
-    @media (max-width: 767px){
+    @media (max-width: 767px) {
       width: auto;
     }
 
