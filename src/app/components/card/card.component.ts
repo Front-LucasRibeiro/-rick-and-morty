@@ -16,19 +16,19 @@ import { personagemActions } from '../../store/actions/personagens.actions';
 
 export class CardComponent {
   @Input() card: Person | undefined;
-  @Input() favorito: string | undefined;
+  // @Input() favorito: string | undefined;
   store = inject(Store)
 
   favoritar() {
     
-    if (this.favorito === 'ativo') {
+    if (this.card?.favorito === 'ativo') {
       // remove da listagem de favoritos 
-      this.favorito = ""
+      this.card.favorito = ""
       this.store.dispatch(personagemActions.removerItemFavoritos({ id: this.card!.id }))
 
     } else {
       // guarda o state global
-      this.favorito = "ativo"
+      this.card!.favorito = "ativo"
       
       const card: Person = {
         id: this.card!.id,

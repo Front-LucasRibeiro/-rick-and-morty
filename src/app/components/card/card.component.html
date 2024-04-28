@@ -1,12 +1,12 @@
 <li class="card" *ngIf="card?.image !== ''" data-id="{{ card?.id }}">
   <picture class="foto">
-    <span class="favoritos {{ favorito }}" (click)="favoritar()"></span>
+    <span class="favoritos {{ card?.favorito }}" (click)="favoritar()"></span>
     <img src="{{ card?.image }}" alt="{{ card?.name }}">
   </picture>
   <div class="info">
     <h3 class="name">{{ card?.name }}</h3>
     <span class="tipo">{{ card?.gender }}</span>    
-    <span class="tipo">{{ card?.status }}</span>    
+    <span class="tipo">{{ card?.status }}</span>     
 
     <ng-container *ngIf="card?.type && card?.species">
       <span class="tipo">{{ card?.type }}</span>

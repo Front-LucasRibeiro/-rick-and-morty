@@ -31,8 +31,15 @@ export default class FavoritosComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.select(selectFavoritos).forEach(data => {
-      this.cards = data
+      this.checkCardIsFavorite(data) 
     })
+  }
+
+  checkCardIsFavorite(data: Person[]): Person[] {
+    this.cards = data.map(card => {
+      return { ...card, favorito: 'ativo' };
+    });
+    return this.cards;
   }
 
   trackByFn(_index: number, item: Person): number {
