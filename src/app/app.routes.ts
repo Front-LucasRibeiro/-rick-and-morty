@@ -10,6 +10,10 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/favoritos/favoritos.component')
   },
   {
+    path: 'detalhes/:id',
+    loadComponent: () => import('./pages/detalhes/detalhes.component')
+  },
+  {
     path: '**',
     loadComponent: () => import('./pages/not-found/not-found.component')
   },

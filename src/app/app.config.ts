@@ -1,9 +1,9 @@
-import { ApplicationConfig } from '@angular/core';
-import { provideRouter } from '@angular/router';
-import { routes } from './app.routes';
-import { provideClientHydration } from '@angular/platform-browser';
 import { provideHttpClient } from '@angular/common/http';
+import { ApplicationConfig } from '@angular/core';
+import { provideClientHydration } from '@angular/platform-browser';
+import { provideRouter } from '@angular/router';
 import { provideState, provideStore } from '@ngrx/store';
+import { routes } from './app.routes';
 import { favoritoReducer } from './store/reducers/personagens.reducer';
 
 

@@ -1,0 +1,46 @@
+<section class="detalhes">
+
+  <div class="top">
+    <h2 class="title-page">{{ titleTop }}</h2>
+
+    <div class="info-personagem" *ngIf="data">
+      <img src="{{ data.image }}" alt="{{ data.name }}" />
+    
+      <ul class="lista">
+        <li><strong>Name:</strong> {{ data.name }}</li>
+        <li><strong>Status:</strong> {{ data.status }}</li>
+        <li><strong>Species:</strong> {{ data.species }}</li>
+        <li *ngIf="data.type"><strong>Type:</strong> {{ data.type }}</li>
+        <li><strong>Gender:</strong> {{ data.gender }}</li>
+        <li><strong>Origin:</strong> {{ data.origin.name }}</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="middle">
+    <h2 class="title-page">{{ titleMiddle }}</h2>
+
+    <ul class="lista" *ngIf="data">
+      <li><strong>Name:</strong> {{ data.location.name }}</li>
+    </ul>
+  </div>
+
+  <div class="bottom">
+    <h2 class="title-page">{{ titleBottom }}</h2>
+
+    <div *ngIf="dataEpisode.length > 0">
+      <ul class="lista lista-episodio" *ngFor="let item of dataEpisode; trackBy: trackByFn">
+        <li> 
+          <strong>Episódio:</strong> {{ item.episode }}
+          <br>
+          <strong>Data de transmissão:</strong> {{ item.air_date }}
+          <br>
+          <strong>Nome:</strong> {{ item.name }}
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+

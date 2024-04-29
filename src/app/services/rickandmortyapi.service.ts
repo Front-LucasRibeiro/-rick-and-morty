@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Info, Person, Results } from '../interfaces/rickandmortyapi';
+import { Character, Episode, Person, Results } from '../interfaces/rickandmortyapi';
 import { Observable, map, tap } from 'rxjs';
 import { environment } from '../../environments/environment';
 
@@ -36,6 +36,14 @@ export class RickandmortyapiService {
       map((res: any) => res.info.pages), 
       // tap(res => console.log(res))
     )
+  }
+
+  listaDetalhesPersonagem(id: string): Observable<Character> {
+    return this.http.get<Character>(`${this.API}/${id}`);
+  }
+
+  listaEpisodiosPersonagem(linkApi: string): Observable<Episode> {
+    return this.http.get<Episode>(linkApi);
   }
 
   buscar(term: string): Observable<Person[]> {

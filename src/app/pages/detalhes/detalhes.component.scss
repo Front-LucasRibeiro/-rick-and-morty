@@ -1,0 +1,60 @@
+.detalhes{
+  .title-page{
+    margin: 22px 0 18px; 
+  }
+
+  .info-personagem{
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    margin: 22px 0 42px;
+
+    @media (max-width: 767px){
+      justify-content: center;
+    }
+
+    @media (max-width: 480px){
+      flex-direction: column;
+    }
+
+    img{
+      border-radius: 100%;
+      width: 220px;
+    }
+  }
+
+  .middle{
+    li{
+      @media (max-width: 767px){
+        text-align: center;
+      }
+    }
+  }
+
+  .lista{
+    &.lista-episodio{
+      li{
+        margin-bottom: 22px;
+        border: 1px solid #fff;
+        padding: 12px;
+        border-radius: 5px;
+        line-height: 1.5rem;
+      }
+    }
+    
+    li{
+      color: #fff;
+      font-size: 0.875rem;
+      line-height: 1rem;
+      margin-bottom: 8px;
+
+      @media (max-width: 767px){
+        text-align: center;
+      }
+    }
+
+    strong{
+      font-weight: bold;
+    }
+  }
+}

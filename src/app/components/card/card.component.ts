@@ -3,12 +3,13 @@ import { Person } from '../../interfaces/rickandmortyapi';
 import { NgIf } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { personagemActions } from '../../store/actions/personagens.actions';
+import { RouterModule } from '@angular/router';
 
 
 @Component({
   selector: 'app-card',
   standalone: true,
-  imports: [NgIf],
+  imports: [NgIf,RouterModule], 
   templateUrl: './card.component.html',
   styleUrl: './card.component.scss'
 })
@@ -16,7 +17,6 @@ import { personagemActions } from '../../store/actions/personagens.actions';
 
 export class CardComponent {
   @Input() card: Person | undefined;
-  // @Input() favorito: string | undefined;
   store = inject(Store)
 
   favoritar() {
