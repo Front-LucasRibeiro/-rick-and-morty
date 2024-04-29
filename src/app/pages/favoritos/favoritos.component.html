@@ -2,10 +2,10 @@
 
   <div class="top">
     <h2 class="title-page">{{ titlePage }}</h2>
-    <button class="button" (click)="removerTodos()" *ngIf="cards.length !== 0">Remover todos</button>
+    <button class="button btn-remover" (click)="removerTodos()" *ngIf="cards.length !== 0">Remover todos</button>
   </div>
 
-  <ul class="list" *ngIf="cards.length > 0; else vazio">
+  <ul class="list list-favoritos" *ngIf="cards.length > 0; else vazio">
     <app-card 
       *ngFor="let card of cards; trackBy: trackByFn" 
       [card]="card" 
